@@ -249,10 +249,10 @@ def cal_mar_pro(currency, study, freq, period, mode, fp, mp_st, mp_ed, date):
         alpha1 = ""
         alpha2 = ""
         for i in range(len(rf)):
-            if pd.Timestamp(rf.index[i]) < date:
+            if rf.index[i] < pd.Timestamp(date):
                 if round(rf.iloc[i]["high"], rd) >= item >= round(rf.iloc[i]["low"], rd):
                     alpha += mp_dict[rf.index[i].strftime("%H%M")]
-            elif pd.Timestamp(rf.index[i]) >= date:
+            elif rf.index[i] >= pd.Timestamp(date):
                 if round(rf.iloc[i]["high"], rd) >= item >= round(rf.iloc[i]["low"], rd):
                     alpha1 += mp_dict[rf.index[i].strftime("%H%M")]
         tocount1 += len(alpha1)
